@@ -24,9 +24,9 @@ THIRD_PARTY_APPS = []
 LOCAL_APPS = [
     "apps.shop",
     "apps.common",
-    # "apps.users",
-    # "apps.profiles",
-    # "apps.ratings",
+    "apps.users",
+    "apps.profiles",
+    "apps.ratings",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -105,4 +105,4 @@ MEDIA_ROOT = BASE_DIR / "media/images"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# AUTH_USER_MODEL = "users.User"
+AUTH_USER_MODEL = "users.User"

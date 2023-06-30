@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import cartitems, checkout, contact, detail, home, index, shop
+from .views import cartitems, checkout, contact, detail, home, index, shop, updateItem
 
 app_name = "shop"
 
@@ -12,4 +12,5 @@ urlpatterns = [
     path("index/", index, name="index"),
     path("shop/", shop, name="shop"),
     path("detail/<str:id>/", detail, name="detail"),
+    path("update-item/", updateItem, name="updateItem"),
 ]
