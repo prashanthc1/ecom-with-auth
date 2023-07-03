@@ -69,17 +69,17 @@ class Product(TimeStampedUUIDModel):
         return url
 
 
-class Customer(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
-    name = models.CharField(max_length=200, null=True, blank=True)
-    email = models.EmailField(max_length=200, null=True, blank=True)
+# class Customer(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
+#     name = models.CharField(max_length=200, null=True, blank=True)
+#     email = models.EmailField(max_length=200, null=True, blank=True)
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
 
 class Order(TimeStampedUUIDModel):
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, blank=True, null=True)
+    customer = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
     completed = models.BooleanField(default=False, null=True, blank=False)
     transaction_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
 
@@ -123,7 +123,7 @@ class OrderItem(models.Model):
 
 
 class ShippingAddress(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
+    customer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
     address = models.CharField(max_length=200, null=False)
     city = models.CharField(max_length=200, null=False)

@@ -22,7 +22,7 @@ def home(request):
         products = paginator.page(paginator.num_pages)
 
     if request.user.is_authenticated:
-        customer = request.user.customer
+        customer = request.user
         order, created = Order.objects.get_or_create(customer=customer, completed=False)
         items = order.orderitem_set.all()
         cartitems = order.get_cart_items
@@ -49,7 +49,7 @@ def home(request):
 
 def cartitems(request):
     if request.user.is_authenticated:
-        customer = request.user.customer
+        customer = request.user
         order, created = Order.objects.get_or_create(customer=customer, completed=False)
         items = order.orderitem_set.all()
         cartitems = order.get_cart_items
@@ -71,7 +71,7 @@ def cartitems(request):
 
 def checkout(request):
     if request.user.is_authenticated:
-        customer = request.user.customer
+        customer = request.user
         order, created = Order.objects.get_or_create(customer=customer, completed=False)
         items = order.orderitem_set.all()
         cartitems = order.get_cart_items
@@ -98,7 +98,7 @@ def updateItem(request):
     # print("action: ", action)
     # print("id: ", productId)
 
-    customer = request.user.customer
+    customer = request.user
     product = Product.objects.get(id=productId)
     order, created = Order.objects.get_or_create(customer=customer, completed=False)
     orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
@@ -120,7 +120,7 @@ def updateItem(request):
 
 def contact(request):
     if request.user.is_authenticated:
-        customer = request.user.customer
+        customer = request.user
         order, created = Order.objects.get_or_create(customer=customer, completed=False)
         items = order.orderitem_set.all()
         cartitems = order.get_cart_items
@@ -148,7 +148,7 @@ def detail(request, id):
 
 def index(request):
     if request.user.is_authenticated:
-        customer = request.user.customer
+        customer = request.user
         order, created = Order.objects.get_or_create(customer=customer, completed=False)
         items = order.orderitem_set.all()
         cartitems = order.get_cart_items
