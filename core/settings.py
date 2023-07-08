@@ -1,11 +1,24 @@
 from pathlib import Path
 
+import environ
+
+env = environ.Env(DEBUG=(bool, False))
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# environ.Env.read_env(BASE_DIR / ".env")
+env.read_env(BASE_DIR / ".env")
 
-SECRET_KEY = "django-insecure-3k7=u=xglyt436(!3+-mo+bljwg41hm5j8l(t*)1xnj@*jtf5)"
 
-DEBUG = True
+DEBUG = env("DEBUG")
+
+
+SECRET_KEY = env("SECRET_KEY")
+
+
+# SECRET_KEY = "django-insecure-3k7=u=xglyt436(!3+-mo+bljwg41hm5j8l(t*)1xnj@*jtf5)"
+
+# DEBUG = True
 
 ALLOWED_HOSTS = []
 
