@@ -1,0 +1,10 @@
+{% extends 'debug_toolbar/base.html' %}
+
+{% block css %}{{ block.super }}
+<style>
+    :root {
+        --djdt-font-family-primary: 'Roboto', sans-serif;
+        color: aquamarine;
+    }
+</style>
+{% endblock %}
