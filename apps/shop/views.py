@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 
 from .filters import ProductFilter
-from .models import Order, OrderItem, Product
+from .models import Category, Order, OrderItem, Product
 
 
 def home(request):
@@ -35,12 +35,14 @@ def home(request):
         }
         cartitems = order["get_cart_items"]
 
+    categories = Category.objects.all()
     context = {
         "products": products,
         "myFilter": myFilter,
         "order": order,
         "items": items,
         "cartitems": cartitems,
+        "categories": categories,
     }
     # products = Product.objects.all()
     # context = {"products": products}

@@ -3,6 +3,7 @@ import uuid
 from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
+from mptt.models import MPTTModel, TreeForeignKey
 
 from apps.common.models import TimeStampedUUIDModel
 from apps.users.models import User
@@ -17,9 +18,15 @@ class Tag(TimeStampedUUIDModel):
         return self.name
 
 
-class Category(TimeStampedUUIDModel):
+class Category(MPTTModel):
+    pkid = models.BigAutoField(primary_key=True, editable=False, null=False, unique=True)
+    id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     name = models.CharField(max_length=50)
+    parent = TreeForeignKey("self", on_delete=models.CASCADE, null=True, blank=True, related_name="children")
     description = models.CharField(max_length=200)
+
+    class MPTTMeta:
+        order_insertion_by = ["name"]
 
     class Meta:
         verbose_name = _("Category")

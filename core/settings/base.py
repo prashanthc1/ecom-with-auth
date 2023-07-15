@@ -4,23 +4,14 @@ import environ
 
 env = environ.Env(DEBUG=(bool, False))
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-# environ.Env.read_env(BASE_DIR / ".env")
 env.read_env(BASE_DIR / ".env")
 
 
 DEBUG = env("DEBUG")
-
-
 SECRET_KEY = env("SECRET_KEY")
-
-
-# SECRET_KEY = "django-insecure-3k7=u=xglyt436(!3+-mo+bljwg41hm5j8l(t*)1xnj@*jtf5)"
-
-# DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env("ALLOWED_HOSTS").split(" ")
 
 
 DJANGO_APPS = [
@@ -33,8 +24,9 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    "debug_toolbar",
+    # "debug_toolbar",
     "django_htmx",
+    "mptt",
 ]
 
 LOCAL_APPS = [
@@ -50,7 +42,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 
 MIDDLEWARE = [
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    # "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -81,14 +73,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "core.wsgi.application"
-
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
 
 
 AUTH_PASSWORD_VALIDATORS = [

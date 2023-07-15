@@ -9,6 +9,8 @@ django-debug-toolbar==4.1.0
 django-environ==0.10.0
 django-filter==23.2
 django-htmx==1.16.0
+django-js-asset==2.1.0
+django-mptt==0.14.0
 django-phonenumber-field==7.1.0
 environ==1.0
 mypy-extensions==1.0.0
