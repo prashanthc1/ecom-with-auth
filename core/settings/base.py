@@ -24,7 +24,6 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    # "debug_toolbar",
     "django_htmx",
     "mptt",
 ]
@@ -42,7 +41,6 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 
 MIDDLEWARE = [
-    # "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
