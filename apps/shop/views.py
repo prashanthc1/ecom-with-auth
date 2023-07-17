@@ -63,10 +63,12 @@ def cartitems(request):
             "get_cart_total_with_shipping": 0,
         }
         cartitems = order["get_cart_items"]
+    categories = Category.objects.all()
     context = {
         "items": items,
         "order": order,
         "cartitems": cartitems,
+        "categories": categories,
     }
     return render(request, "shop/cart.html", context)
 
@@ -85,10 +87,12 @@ def checkout(request):
             "get_cart_total_with_shipping": 0,
         }
         cartitems = order["get_cart_items"]
+    categories = Category.objects.all()
     context = {
         "items": items,
         "order": order,
         "cartitems": cartitems,
+        "categories": categories,
     }
     return render(request, "shop/checkout.html", context)
 
@@ -134,17 +138,25 @@ def contact(request):
             "get_cart_total_with_shipping": 0,
         }
         cartitems = order["get_cart_items"]
+
+    categories = Category.objects.all()
     context = {
         "items": items,
         "order": order,
         "cartitems": cartitems,
+        "categories": categories,
     }
     return render(request, "shop/contact.html", context)
 
 
 def detail(request, id):
     product = Product.objects.get(id=id)
-    context = {"product": product}
+    categories = Category.objects.all()
+
+    context = {
+        "product": product,
+        "categories": categories,
+    }
     return render(request, "shop/detail.html", context)
 
 
@@ -162,11 +174,14 @@ def index(request):
             "get_cart_total_with_shipping": 0,
         }
         cartitems = order["get_cart_items"]
+    categories = Category.objects.all()
     context = {
         "items": items,
         "order": order,
         "cartitems": cartitems,
+        "categories": categories,
     }
+
     return render(request, "shop/index.html", context)
 
 
