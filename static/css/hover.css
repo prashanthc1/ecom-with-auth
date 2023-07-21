@@ -1,0 +1,20 @@
+/* Add some basic styles for the category and subcategory links */
+.category-link {
+	display: inline-block;
+	padding: 5px 10px;
+	color: #000;
+	text-decoration: none;
+}
+
+/* Style for subcategories */
+.subcategory-link {
+	display: none;
+	padding-left: 20px;
+	color: #666;
+	text-decoration: none;
+}
+
+/* Add hover effect for the category link to show subcategories */
+.category-link:hover .subcategory-link {
+	display: inline-block;
+}

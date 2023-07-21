@@ -13,6 +13,26 @@
                 <div class="navbar-nav w-100">
 
 
+                    <!-- <div class="nav-item dropdown dropright">
+                        {% recursetree categories %}
+                        <div class="category-link">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                {{ node.name }}
+                            </a>
+                            {% if not node.is_leaf_node %}
+                            {% for child in node.get_children %}
+                            <div class="children dropdown-menu position-absolute rounded-0 border-0 m-0">
+                                <a href="#" class="dropdown-item">
+                                    {{ child.name }}
+                                </a>
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                        {% endrecursetree %}
+                    </div> -->
+
+
                     <div class="nav-item dropdown dropright">
                         {% recursetree categories %}
 
@@ -44,15 +64,7 @@
                             <a href="" class="dropdown-item">Baby's Dresses</a>
                         </div>
                     </div>
-                    <a href="" class="nav-item nav-link">Shirts</a>
-                    <a href="" class="nav-item nav-link">Jeans</a>
-                    <a href="" class="nav-item nav-link">Swimwear</a>
-                    <a href="" class="nav-item nav-link">Sleepwear</a>
-                    <a href="" class="nav-item nav-link">Sportswear</a>
-                    <a href="" class="nav-item nav-link">Jumpsuits</a>
-                    <a href="" class="nav-item nav-link">Blazers</a>
-                    <a href="" class="nav-item nav-link">Jackets</a>
-                    <a href="" class="nav-item nav-link">Shoes</a>
+
                 </div>
             </nav>
         </div>
