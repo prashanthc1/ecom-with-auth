@@ -17,10 +17,14 @@ class Tag(TimeStampedUUIDModel):
 
 
 class Category(MPTTModel):
-    pkid = models.BigAutoField(primary_key=True, editable=False, null=False, unique=True)
+    pkid = models.BigAutoField(
+        primary_key=True, editable=False, null=False, unique=True
+    )
     id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     name = models.CharField(max_length=50)
-    parent = TreeForeignKey("self", on_delete=models.CASCADE, null=True, blank=True, related_name="children")
+    parent = TreeForeignKey(
+        "self", on_delete=models.CASCADE, null=True, blank=True, related_name="children"
+    )
     description = models.CharField(max_length=200)
 
     class MPTTMeta:
@@ -36,7 +40,9 @@ class Category(MPTTModel):
 
 class Product(TimeStampedUUIDModel):
     name = models.CharField(max_length=50, null=False, blank=False)
-    catogary = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name=_("Category"))
+    catogary = models.ForeignKey(
+        Category, on_delete=models.CASCADE, verbose_name=_("Category")
+    )
     image = models.ImageField(upload_to="ProductImages")
     offer_price = models.DecimalField(max_digits=5, decimal_places=2)
     actual_price = models.DecimalField(max_digits=5, decimal_places=2)
@@ -104,7 +110,9 @@ class Order(TimeStampedUUIDModel):
 
 
 class OrderItem(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True)
+    product = models.ForeignKey(
+        Product, on_delete=models.SET_NULL, blank=True, null=True
+    )
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
     quantity = models.IntegerField(default=0, null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True, null=True, blank=True)
